@@ -22,7 +22,11 @@ public class CountdownTime : MonoBehaviour {
         startingTime -= Time.deltaTime; //counts down from the starting time
         theText.text = "" + Mathf.Round (startingTime); //Using Matf rounds the numbers counting down
         if (startingTime < 0)
+        {
             startingTime = 0;
+            SceneManager.LoadScene("GameOver");
+        }
+            
         
     }
 }
