@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoffeeInter : MonoBehaviour {
+public class AudioClips : MonoBehaviour {
 
+	public AudioClip[] audioClips;
 	// Use this for initialization
 	void Start () {
 		

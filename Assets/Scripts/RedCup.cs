@@ -9,8 +9,6 @@ public class RedCup : MonoBehaviour {
     public bool working;
     public GameObject itemNeeded; //item needed inorder to interact with coffee machine
     public Animator anim;
-    
-
 
     public void DoInteraction()
     { 
