@@ -8,11 +8,15 @@ public class PlayerBehavior : MonoBehaviour {
     public float playerSpeed;
     private bool disabled; //player disable movement
     public CountdownTime myInstanceOfCountdowntime;
-    //public bool canMove;
-
 
     Rigidbody2D rb;
     SpriteRenderer sr;
+
+	//variables needed for sound effects
+	GameObject camera;
+	AudioSource audio;
+	AudioClips audioClipsList;
+	AudioClip clockPickUpSound;
 
 	// Use this for initialization
 	public void Start () {
@@ -20,7 +24,11 @@ public class PlayerBehavior : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         disabled = false; //not disabled at start of the game
-        //canMove = true;
+
+		camera = GameObject.Find ("Main Camera");
+		audio = camera.GetComponent<AudioSource> ();
+		audioClipsList = camera.GetComponent<AudioClips> ().audioClips;
+		clockPickUpSound = audioClipsList [1];
 	}
 
     // Update is called once per frame
