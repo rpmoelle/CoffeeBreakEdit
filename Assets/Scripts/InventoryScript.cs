@@ -5,10 +5,21 @@ using UnityEngine;
 public class InventoryScript : MonoBehaviour {
     //creating an inventory for the player
     public GameObject[] inventory = new GameObject[2];
+	public GameObject camera;
+
+	//variables for handling sound effects
+	AudioSource audio;
+	AudioClips audioClipList;
+	AudioClip getCupSound;
+
+	void Start (){
+		audio = camera.GetComponent<AudioSource> ();
+		audioClipList = camera.GetComponent<AudioClips> ();
+		getCupSound = audioClipList.audioClips [0];
+	}
 
     public void AddItem(GameObject item)
     {
-
         bool itemAdded = false;
 
         for (int i = 0; i < inventory.Length; i++)
@@ -16,6 +27,11 @@ public class InventoryScript : MonoBehaviour {
             if(inventory [i] == null)
             {
                 inventory[i] = item;
+
+				//if the item is the red cup, play the pickup sound
+				if (item.name == "redcup")
+					audio.PlayOneShot (getCupSound);
+				
                 Debug.Log(item.name + " was added");
                 itemAdded = true;
                 break;
