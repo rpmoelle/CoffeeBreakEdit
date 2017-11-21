@@ -18,6 +18,8 @@ public class InventoryScript : MonoBehaviour {
 		getCupSound = audioClipList.audioClips [0];
 	}
 
+	//i am a test comment!
+
     public void AddItem(GameObject item)
     {
         bool itemAdded = false;
