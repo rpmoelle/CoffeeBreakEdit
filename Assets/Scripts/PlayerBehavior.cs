@@ -15,7 +15,7 @@ public class PlayerBehavior : MonoBehaviour {
 	//variables needed for sound effects
 	GameObject camera;
 	AudioSource audio;
-	AudioClips audioClipsList;
+	AudioClip[] audioClipsList;
 	AudioClip clockPickUpSound;
 
 	// Use this for initialization

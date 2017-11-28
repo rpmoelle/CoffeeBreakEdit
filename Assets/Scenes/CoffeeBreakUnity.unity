@@ -488,7 +488,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45857335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 294, y: 168, z: 0}
+  m_LocalPosition: {x: 299.5, y: 168, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 85435851}
@@ -8996,6 +8996,7 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 0d80fda8c51bd43b2b1c3d69319f5e98, type: 3}
   - {fileID: 8300000, guid: a44991dd9059441f99a2589337cf9cd3, type: 3}
+  - {fileID: 8300000, guid: b1836cce3360b6048abf6721dcc11017, type: 3}
 --- !u!82 &1942706426
 AudioSource:
   m_ObjectHideFlags: 0
