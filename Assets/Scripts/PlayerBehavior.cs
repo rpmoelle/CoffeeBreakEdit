@@ -36,7 +36,7 @@ public class PlayerBehavior : MonoBehaviour {
 				sr.flipX = true;
 
 			} else if (Input.GetKey (KeyCode.RightArrow)) {
-				rb.velocity = new Vector2 (playerSpeed, 0);
+				rb.velocity = new Vector2 (playerSpeed, rb.velocity.y);
 				GetComponent<Animator> ().SetBool ("isRunning", true);
 				GetComponent<Animator> ().SetBool ("isWalking", false);
 
@@ -100,6 +100,13 @@ public class PlayerBehavior : MonoBehaviour {
         if (peerCol.gameObject.tag == "Peers")
         {
             disabled = true;
+
+			if (disabled == true) {
+				GetComponent<Animator> ().SetBool ("isDizzy", true);
+				GetComponent<Animator> ().SetBool ("isWalking", false);
+				GetComponent<Animator> ().SetBool ("isRunning", false);
+			}
+
             Invoke("ResetDisabled", 5.0f); //after 5 seconds call ResetDisabled()
             peerCol.gameObject.SendMessage("DisablePeers");
         }
@@ -116,6 +123,7 @@ public class PlayerBehavior : MonoBehaviour {
     void ResetDisabled()
     {
         disabled = false;
+		GetComponent<Animator> ().SetBool ("isDizzy", false);
     }
 
 }
