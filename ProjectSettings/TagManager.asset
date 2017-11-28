@@ -59,3 +59,6 @@ TagManager:
   - name: Peers
     uniqueID: 278434251
     locked: 0
+  - name: UI
+    uniqueID: 2900400875
+    locked: 0

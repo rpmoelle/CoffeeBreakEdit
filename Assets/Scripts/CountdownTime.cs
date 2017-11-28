@@ -44,7 +44,18 @@ public class CountdownTime : MonoBehaviour {
         //Lower the coffee bar by rescaling vertically and mapping to remaining time
         float mappedTimeVal = scale(0f,60f,0f, .9f,startingTime);
         coffeeBar.transform.localScale = new Vector3(mappedTimeVal, coffeeBar.transform.localScale.y, coffeeBar.transform.localScale.z);
-            
-        
+       // coffeeBar.transform.position = new Vector3(coffeeBar.transform.position.x, coffeeBar.transform.position.y - .08f, coffeeBar.transform.position.z);
+       if(startingTime < 30)
+        {
+            //
+            Debug.Log("Hello? 30");
+        }
+        if (startingTime < 15)
+        {
+            //coffeeBar_BG.color = Color.red;
+            coffeeBar_BG.color = new Color(coffeeBar_BG.color.r, coffeeBar_BG.color.g - .005f, coffeeBar_BG.color.b - .005f);
+        }
+
+
     }
 }
