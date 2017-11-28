@@ -488,7 +488,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45857335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 294, y: 168, z: 0}
+  m_LocalPosition: {x: 98, y: 61.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 85435851}
@@ -654,7 +654,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 85435850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2799988, y: 138.2, z: 0}
+  m_LocalPosition: {x: -3.2799988, y: 31.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 45857339}
@@ -3821,7 +3821,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 953432067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 95.3, y: 133, z: 0}
+  m_LocalPosition: {x: 95.3, y: 26.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 45857339}
@@ -3844,6 +3844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingTime: 60
+  coffeeBar: {fileID: 0}
+  coffeeBar_BG: {fileID: 0}
 --- !u!114 &953432070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3999,6 +4001,23 @@ GameObject:
   m_PrefabParentObject: {fileID: 1141796672277570, guid: fe8b77f391879a445aa0c2bfeaab0cdb,
     type: 2}
   m_PrefabInternal: {fileID: 1727662461}
+--- !u!95 &976040950
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976040949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a9b4fa1d9e198f458364442636c5826, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &999802814
 GameObject:
   m_ObjectHideFlags: 0
@@ -8293,11 +8312,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4422737238923288, guid: fe8b77f391879a445aa0c2bfeaab0cdb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.63
+      value: 10.53
       objectReference: {fileID: 0}
     - target: {fileID: 4422737238923288, guid: fe8b77f391879a445aa0c2bfeaab0cdb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.53
+      value: 2.37
       objectReference: {fileID: 0}
     - target: {fileID: 4422737238923288, guid: fe8b77f391879a445aa0c2bfeaab0cdb, type: 2}
       propertyPath: m_LocalPosition.z
