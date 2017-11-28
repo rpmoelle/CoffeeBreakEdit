@@ -10,7 +10,7 @@ public class PlayerBehavior : MonoBehaviour {
     public CountdownTime myInstanceOfCountdowntime;
     //public bool canMove;
 
-
+	Animator characterAnimator;
     Rigidbody2D rb;
     SpriteRenderer sr;
 
@@ -29,38 +29,59 @@ public class PlayerBehavior : MonoBehaviour {
         if (disabled == false)
         {
 
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                rb.velocity = new Vector2(-playerSpeed, rb.velocity.y);
-            }
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				rb.velocity = new Vector2 (-playerSpeed, rb.velocity.y);
+				GetComponent<Animator> ().SetBool ("isRunning", true);
+				GetComponent<Animator> ().SetBool ("isWalking", false);
+				sr.flipX = true;
 
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                rb.velocity = new Vector2(playerSpeed, rb.velocity.y);
-            }
+			} else if (Input.GetKey (KeyCode.RightArrow)) {
+				rb.velocity = new Vector2 (playerSpeed, rb.velocity.y);
+				GetComponent<Animator> ().SetBool ("isRunning", true);
+				GetComponent<Animator> ().SetBool ("isWalking", false);
+
+				sr.flipX = false;
+
+			} else if (Input.GetKey (KeyCode.DownArrow)) {
+				GetComponent<Animator> ().SetBool ("isRunning", false);
+				GetComponent<Animator> ().SetBool ("isWalking", true);
+
+			} else if (Input.GetKey (KeyCode.UpArrow)) {
+				GetComponent<Animator> ().SetBool ("isRunning", false);
+				GetComponent<Animator> ().SetBool ("isWalking", true);
+			}
 
             else
             {
                 rb.velocity = new Vector2(0.0f, rb.velocity.y);
+				GetComponent<Animator>().SetBool ("isRunning", false);
+				GetComponent<Animator>().SetBool ("isWalking", false);
             }
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 rb.velocity = new Vector2(rb.velocity.x, -playerSpeed);
+				/*GetComponent<Animator>().SetBool ("isWalking", true);
+				GetComponent<Animator>().SetBool ("isRunning", false); */
+
             }
 
             else if (Input.GetKey(KeyCode.UpArrow))
             {
                 rb.velocity = new Vector2(rb.velocity.x, playerSpeed);
+				/*GetComponent<Animator>().SetBool ("isWalking", true);
+				GetComponent<Animator>().SetBool ("isRunning", false); */
             }
             else
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0.0f);
+				/*GetComponent<Animator>().SetBool ("isWalking", false);
+				GetComponent<Animator>().SetBool ("isRunning", false); */
             }
 
         }
         //make transition of idle animation to walking animation with boolean 
-        if(rb.velocity.magnitude > 0.01f)
+        /*if(rb.velocity.magnitude > 0.01f)
         {
             GetComponent<Animator>().SetBool("isWalking", true);
 
@@ -69,15 +90,23 @@ public class PlayerBehavior : MonoBehaviour {
         if(rb.velocity.magnitude <= 0.01f)
         {
             GetComponent<Animator>().SetBool("isWalking", false);
-        }
+        }*/
 
 
     }
+
     public void OnTriggerEnter2D(Collider2D peerCol)
     {
         if (peerCol.gameObject.tag == "Peers")
         {
             disabled = true;
+
+			if (disabled == true) {
+				GetComponent<Animator> ().SetBool ("isDizzy", true);
+				GetComponent<Animator> ().SetBool ("isWalking", false);
+				GetComponent<Animator> ().SetBool ("isRunning", false);
+			}
+
             Invoke("ResetDisabled", 5.0f); //after 5 seconds call ResetDisabled()
             peerCol.gameObject.SendMessage("DisablePeers");
         }
@@ -94,6 +123,7 @@ public class PlayerBehavior : MonoBehaviour {
     void ResetDisabled()
     {
         disabled = false;
+		GetComponent<Animator> ().SetBool ("isDizzy", false);
     }
 
 }
