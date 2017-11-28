@@ -14,13 +14,23 @@ public class PlayerBehavior : MonoBehaviour {
     Rigidbody2D rb;
     SpriteRenderer sr;
 
+	//variables needed for sound effects
+	GameObject camera;
+	AudioSource audio;
+	AudioClip[] audioClipsList;
+	AudioClip clockPickUpSound;
+
 	// Use this for initialization
 	public void Start () {
 
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         disabled = false; //not disabled at start of the game
-        //canMove = true;
+
+		camera = GameObject.Find ("Main Camera");
+		audio = camera.GetComponent<AudioSource> ();
+		audioClipsList = camera.GetComponent<AudioClips> ().audioClips;
+		clockPickUpSound = audioClipsList [1];
 	}
 
     // Update is called once per frame
