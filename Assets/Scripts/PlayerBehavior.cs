@@ -36,7 +36,7 @@ public class PlayerBehavior : MonoBehaviour {
 				sr.flipX = true;
 
 			} else if (Input.GetKey (KeyCode.RightArrow)) {
-				rb.velocity = new Vector2 (playerSpeed, rb.velocity.y);
+				rb.velocity = new Vector2 (playerSpeed, 0);
 				GetComponent<Animator> ().SetBool ("isRunning", true);
 				GetComponent<Animator> ().SetBool ("isWalking", false);
 
