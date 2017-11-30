@@ -8,7 +8,7 @@ public class SpriteDepth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ren = GetComponent<SpriteRenderer>();
-	}
+	}//test
 	
 	// Update is called once per frame
 	void Update () {
