@@ -17,7 +17,7 @@ public class PeerBehavior : MonoBehaviour {
 	public void Start () {
         disabled = false;
 
-		//grabbing the various small talk sounds
+		//grabbing the various small talk sounds and audio source
 		audioClips = GameObject.Find ("Enemy Peers").GetComponent<AudioClips> ().audioClips;
 		audioSource = GameObject.Find ("Enemy Peers").GetComponent<AudioSource> ();
 	}
@@ -60,8 +60,9 @@ public class PeerBehavior : MonoBehaviour {
 
 		//if the enemy collides with the player, play random small talk
 		if(collision.gameObject.tag == "Player"){
-			int clip = Random.Range (0, 4);
-			audioSource.Play (audioClips [clip]);
+			int clipNumber = Random.Range (0, 4);
+			audioSource.clip = audioClips [clipNumber];
+			audioSource.Play ();
 		}
         
     }
