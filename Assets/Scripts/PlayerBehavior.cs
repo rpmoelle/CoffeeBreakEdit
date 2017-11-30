@@ -126,7 +126,7 @@ public class PlayerBehavior : MonoBehaviour {
                     break;
             }
     }
-
+    //test
     void ResetDisabled()
     {
         disabled = false;
