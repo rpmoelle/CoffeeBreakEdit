@@ -1,3 +1,4 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,17 +9,13 @@ public class PlayerBehavior : MonoBehaviour {
     public float playerSpeed;
     private bool disabled; //player disable movement
     public CountdownTime myInstanceOfCountdowntime;
+    public ParticleSystem stars_ps;
+    public ParticleSystem boink_ps;
     //public bool canMove;
 
-	Animator characterAnimator;
+    Animator characterAnimator;
     Rigidbody2D rb;
     SpriteRenderer sr;
-
-	//variables needed for sound effects
-	GameObject camera;
-	AudioSource audio;
-	AudioClip[] audioClipsList;
-	AudioClip clockPickUpSound;
 
 	// Use this for initialization
 	public void Start () {
@@ -26,11 +23,7 @@ public class PlayerBehavior : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         disabled = false; //not disabled at start of the game
-
-		camera = GameObject.Find ("Main Camera");
-		audio = camera.GetComponent<AudioSource> ();
-		audioClipsList = camera.GetComponent<AudioClips> ().audioClips;
-		clockPickUpSound = audioClipsList [1];
+        //canMove = true;
 	}
 
     // Update is called once per frame
@@ -39,24 +32,24 @@ public class PlayerBehavior : MonoBehaviour {
         if (disabled == false)
         {
 
-			if (Input.GetKey (KeyCode.LeftArrow)) {
+			if (Input.GetKey (KeyCode.A)) {
 				rb.velocity = new Vector2 (-playerSpeed, rb.velocity.y);
 				GetComponent<Animator> ().SetBool ("isRunning", true);
 				GetComponent<Animator> ().SetBool ("isWalking", false);
 				sr.flipX = true;
 
-			} else if (Input.GetKey (KeyCode.RightArrow)) {
+			} else if (Input.GetKey (KeyCode.D)) {
 				rb.velocity = new Vector2 (playerSpeed, rb.velocity.y);
 				GetComponent<Animator> ().SetBool ("isRunning", true);
 				GetComponent<Animator> ().SetBool ("isWalking", false);
 
 				sr.flipX = false;
 
-			} else if (Input.GetKey (KeyCode.DownArrow)) {
+			} else if (Input.GetKey (KeyCode.S)) {
 				GetComponent<Animator> ().SetBool ("isRunning", false);
 				GetComponent<Animator> ().SetBool ("isWalking", true);
 
-			} else if (Input.GetKey (KeyCode.UpArrow)) {
+			} else if (Input.GetKey (KeyCode.W)) {
 				GetComponent<Animator> ().SetBool ("isRunning", false);
 				GetComponent<Animator> ().SetBool ("isWalking", true);
 			}
@@ -68,7 +61,7 @@ public class PlayerBehavior : MonoBehaviour {
 				GetComponent<Animator>().SetBool ("isWalking", false);
             }
 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.S))
             {
                 rb.velocity = new Vector2(rb.velocity.x, -playerSpeed);
 				/*GetComponent<Animator>().SetBool ("isWalking", true);
@@ -76,7 +69,7 @@ public class PlayerBehavior : MonoBehaviour {
 
             }
 
-            else if (Input.GetKey(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.W))
             {
                 rb.velocity = new Vector2(rb.velocity.x, playerSpeed);
 				/*GetComponent<Animator>().SetBool ("isWalking", true);
@@ -117,8 +110,12 @@ public class PlayerBehavior : MonoBehaviour {
 				GetComponent<Animator> ().SetBool ("isRunning", false);
 			}
 
-            Invoke("ResetDisabled", 5.0f); //after 5 seconds call ResetDisabled()
+            Invoke("ResetDisabled", 2.0f); //after 5 seconds call ResetDisabled()
             peerCol.gameObject.SendMessage("DisablePeers");
+            //play the particle bursts
+            stars_ps.Play();
+            boink_ps.Play();
+
         }
 
             switch (peerCol.gameObject.tag)
@@ -134,6 +131,9 @@ public class PlayerBehavior : MonoBehaviour {
     {
         disabled = false;
 		GetComponent<Animator> ().SetBool ("isDizzy", false);
+        //turn off the particle bursts
+        stars_ps.Stop();
+       boink_ps.Stop();
     }
 
 }
