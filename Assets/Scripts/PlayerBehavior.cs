@@ -8,9 +8,11 @@ public class PlayerBehavior : MonoBehaviour {
     public float playerSpeed;
     private bool disabled; //player disable movement
     public CountdownTime myInstanceOfCountdowntime;
+    public ParticleSystem stars_ps;
+    public ParticleSystem boink_ps;
     //public bool canMove;
 
-	Animator characterAnimator;
+    Animator characterAnimator;
     Rigidbody2D rb;
     SpriteRenderer sr;
 
@@ -109,6 +111,10 @@ public class PlayerBehavior : MonoBehaviour {
 
             Invoke("ResetDisabled", 2.0f); //after 5 seconds call ResetDisabled()
             peerCol.gameObject.SendMessage("DisablePeers");
+            //play the particle bursts
+            stars_ps.Play();
+            boink_ps.Play();
+
         }
 
             switch (peerCol.gameObject.tag)
@@ -124,6 +130,9 @@ public class PlayerBehavior : MonoBehaviour {
     {
         disabled = false;
 		GetComponent<Animator> ().SetBool ("isDizzy", false);
+        //turn off the particle bursts
+        stars_ps.Stop();
+       boink_ps.Stop();
     }
 
 }
