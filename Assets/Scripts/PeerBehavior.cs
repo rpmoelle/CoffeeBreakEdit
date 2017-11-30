@@ -9,10 +9,17 @@ public class PeerBehavior : MonoBehaviour {
     public float walkSpeed;
     public bool verticalWalk;
 
+	//variables for handling small talk sounds
+	public AudioClip[] audioClips;
+	public AudioSource audioSource;
+
 	// Use this for initialization
 	public void Start () {
         disabled = false;
-     
+
+		//grabbing the various small talk sounds
+		audioClips = GameObject.Find ("Enemy Peers").GetComponent<AudioClips> ().audioClips;
+		audioSource = GameObject.Find ("Enemy Peers").GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -50,6 +57,19 @@ public class PeerBehavior : MonoBehaviour {
         {
             walkSpeed *= -1;
         }
+
+		//if the enemy collides with the player, play random small talk
+		if(collision.gameObject.tag == "Player"){
+			int clip = Random.Range (0, 4);
+			audioSource.Play (audioClips [clip]);
+		}
         
     }
+
+	private void OnCollisionExit2D(Collision2D coll){
+		//if the enemy stops colliding with the player, end small talk
+		if(coll.gameObject.tag == "Player"){
+			audioSource.Stop ();
+		}
+	}
 }
