@@ -29,24 +29,24 @@ public class PlayerBehavior : MonoBehaviour {
         if (disabled == false)
         {
 
-			if (Input.GetKey (KeyCode.LeftArrow)) {
+			if (Input.GetKey (KeyCode.A)) {
 				rb.velocity = new Vector2 (-playerSpeed, rb.velocity.y);
 				GetComponent<Animator> ().SetBool ("isRunning", true);
 				GetComponent<Animator> ().SetBool ("isWalking", false);
 				sr.flipX = true;
 
-			} else if (Input.GetKey (KeyCode.RightArrow)) {
+			} else if (Input.GetKey (KeyCode.D)) {
 				rb.velocity = new Vector2 (playerSpeed, rb.velocity.y);
 				GetComponent<Animator> ().SetBool ("isRunning", true);
 				GetComponent<Animator> ().SetBool ("isWalking", false);
 
 				sr.flipX = false;
 
-			} else if (Input.GetKey (KeyCode.DownArrow)) {
+			} else if (Input.GetKey (KeyCode.S)) {
 				GetComponent<Animator> ().SetBool ("isRunning", false);
 				GetComponent<Animator> ().SetBool ("isWalking", true);
 
-			} else if (Input.GetKey (KeyCode.UpArrow)) {
+			} else if (Input.GetKey (KeyCode.W)) {
 				GetComponent<Animator> ().SetBool ("isRunning", false);
 				GetComponent<Animator> ().SetBool ("isWalking", true);
 			}
@@ -58,7 +58,7 @@ public class PlayerBehavior : MonoBehaviour {
 				GetComponent<Animator>().SetBool ("isWalking", false);
             }
 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.S))
             {
                 rb.velocity = new Vector2(rb.velocity.x, -playerSpeed);
 				/*GetComponent<Animator>().SetBool ("isWalking", true);
@@ -66,7 +66,7 @@ public class PlayerBehavior : MonoBehaviour {
 
             }
 
-            else if (Input.GetKey(KeyCode.UpArrow))
+            else if (Input.GetKey(KeyCode.W))
             {
                 rb.velocity = new Vector2(rb.velocity.x, playerSpeed);
 				/*GetComponent<Animator>().SetBool ("isWalking", true);
@@ -107,7 +107,7 @@ public class PlayerBehavior : MonoBehaviour {
 				GetComponent<Animator> ().SetBool ("isRunning", false);
 			}
 
-            Invoke("ResetDisabled", 5.0f); //after 5 seconds call ResetDisabled()
+            Invoke("ResetDisabled", 2.0f); //after 5 seconds call ResetDisabled()
             peerCol.gameObject.SendMessage("DisablePeers");
         }
 

@@ -48,7 +48,7 @@ public class CountdownTime : MonoBehaviour {
        if(startingTime < 30)
         {
             //
-            Debug.Log("Hello? 30");
+            //Debug.Log("Hello? 30");
         }
         if (startingTime < 15)
         {
