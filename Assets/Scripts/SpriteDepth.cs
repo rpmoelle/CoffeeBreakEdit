@@ -8,6 +8,7 @@ public class SpriteDepth : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ren = GetComponent<SpriteRenderer>();
+        shadow = GameObject.Find("Player/blobShadow").GetComponent<SpriteRenderer>();
 	}//test
 	
 	// Update is called once per frame
@@ -15,7 +16,11 @@ public class SpriteDepth : MonoBehaviour {
         //change the sprite depth based on it height on the screen
 
         ren.sortingOrder = (int)(transform.position.y*-100f);
-        shadow.sortingOrder = ren.sortingOrder - 200;
+        if(this.gameObject.name == "Player")
+        {
+            shadow.sortingOrder = ren.sortingOrder - 200;
+        }
+        
 
 	}
 }

@@ -9,6 +9,11 @@ public class PlayerInteract : MonoBehaviour {
     public RedCup currentInterObjScript = null;
     public InventoryScript inventory;
 
+    int timer = 0;
+    public AudioSource coffeePouring;
+    public AudioSource win;
+    public Animator coffeeAnim;
+    bool playedSounds = false;
     // Update is called once per frame
 
     void Update()
@@ -37,7 +42,25 @@ public class PlayerInteract : MonoBehaviour {
                         //we found the item needed
                         currentInterObjScript.getCoffee = false;
                         Debug.Log(currentInterObj.name + " got coffee");
-                        SceneManager.LoadScene(3);//you win
+                        timer++;
+                        //play a winning sound
+                        if (!playedSounds)
+                        {
+                            coffeePouring.Play();
+                        }
+                        if (!playedSounds)
+                        {
+                            win.Play();
+                        }
+                        playedSounds = true;
+                        //play animation
+                        coffeeAnim.SetBool("pouring", true);
+                        if (timer > 1600)
+                        {
+                            //wait a few seconds for animation to play
+                            SceneManager.LoadScene(3);//you win
+                        }
+                       
                     }
                    
                     else{

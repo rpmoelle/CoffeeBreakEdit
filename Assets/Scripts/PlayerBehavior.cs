@@ -16,10 +16,11 @@ public class PlayerBehavior : MonoBehaviour {
     Animator characterAnimator;
     Rigidbody2D rb;
     SpriteRenderer sr;
+    public AudioSource gotObj;
 
 	// Use this for initialization
 	public void Start () {
-
+        gotObj = GameObject.Find("kopi/winSound").GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         disabled = false; //not disabled at start of the game
@@ -121,6 +122,8 @@ public class PlayerBehavior : MonoBehaviour {
             switch (peerCol.gameObject.tag)
             {
                 case "plus3":
+                //play sound
+                gotObj.Play();
                     myInstanceOfCountdowntime.startingTime += 3f;
                     peerCol.gameObject.SetActive(false);
                     break;
