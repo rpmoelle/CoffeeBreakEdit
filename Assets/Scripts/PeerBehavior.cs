@@ -70,7 +70,7 @@ public class PeerBehavior : MonoBehaviour {
 	private void OnCollisionExit2D(Collision2D coll){
 		//if the enemy stops colliding with the player, end small talk
 		if(coll.gameObject.tag == "Player"){
-			audioSource.Stop ();
+			//audioSource.Stop ();
 		}
 	}
 }
