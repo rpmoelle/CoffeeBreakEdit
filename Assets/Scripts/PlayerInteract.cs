@@ -17,7 +17,20 @@ public class PlayerInteract : MonoBehaviour {
     // Update is called once per frame
 
     void Update()
-    {   //pick up the red cup
+    {
+        //Debug.Log(timer);
+        if (playedSounds)
+        {
+            timer++;
+            if (!coffeePouring.isPlaying)
+            {
+
+                //wait a few seconds for animation to play
+                SceneManager.LoadScene(3);//you win
+            }
+
+        }
+        //pick up the red cup
         //if (Input.GetButtonDown("Interact") && currentInterObj)
         if (currentInterObj)
         {
@@ -55,11 +68,7 @@ public class PlayerInteract : MonoBehaviour {
                         playedSounds = true;
                         //play animation
                         coffeeAnim.SetBool("pouring", true);
-                        if (timer > 1600)
-                        {
-                            //wait a few seconds for animation to play
-                            SceneManager.LoadScene(3);//you win
-                        }
+                       
                        
                     }
                    
